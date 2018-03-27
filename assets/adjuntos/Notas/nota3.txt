@@ -1,0 +1,46 @@
+Al revez Mensual y Bimestral.
+
+Mensual: 1 y 1
+Bimestral 2 y 2
+
+-------------------------
+
+Añadido:
+Evaluar si la persona tiene incapacidad en:
+	SUA columna F
+	IDSE No salen.
+
+
+no > a 100 000.
+
+
+---------------
+Agregar Columna para XML
+Si SBC == SI
+  Mostrar resultado de la comparativa con el XML
+SI NO
+  Mostrar solo guión medio
+
+-- SOLO EN LA DETALLADA
+Agregar Columna para DIFERENCIA
+Que sea la resta de: IDSE - SUA 
+
+-- SOLO EN LA DETALLADA
+Agregar Columna para INCAPACIDAD
+Buscar en la columna F del SUA los dias de incapacidad
+
+
+
+NumSeguridadSocial="09027601856"
+SalarioDiarioIntegrado="266.03" (Obtener El ultimo pago)
+Amortización: Sumatoria de cada uno de los archivos. TipoDeduccion="010"
+
+
+= NOM6410
+= 010
+
+----------
+Mis Empresas
+-Registros Patronales
+-Comparativa
+-Historico

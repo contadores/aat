@@ -1,0 +1,18 @@
+Diego te mando los puntos que comentaremos en la junta de mañana
+
+Configurar los registros patronales con usuario contraseña y certificado para entrar a idse.gob.mx
+ROBOT que entre a la pagina de idse.gob.mx y descargue los archivos en excel EMA Y EBA
+Menu de CONSULTA para leyes, y reglamentos de IMSS INFONAVIT LFT SAR
+Maquilador de contratos capturando requisitos para hacerlos automaticos
+Cargar XML de nomina por periodos y genere un archivo en excel
+
+SEGUNDO PASO
+
+Integrar a nuestro sistema WEB el sistema SUA 
+ROBOT en la pagina de SIPARE para cargar archivo de pago y genere linea de captura 
+preparar archivos dismag para altas, bajas y modificaciones en IDSE
+Integracion de SBC
+Calculos de proyeccion de SUA mensual y bimestral y de calculo de ISR
+Generar reporte de los XML de nomina por trabajador de manera bismestral
+integracion del SBC bimestral
+Cargar SUA´s en PDF para comparar la integracion de SBC 

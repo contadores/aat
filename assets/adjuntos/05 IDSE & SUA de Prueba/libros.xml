@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libros>
+	<libro 	paginas="600" nombre="El Quijote de la Mancha"			autor="Miguel de Cervantes"
+					editorial="Oveja Negra"				precio="200.00"	fecha="2005" />
+	<libro 	paginas="500" nombre="Cien años de soledad"					autor="Gabriel García Márquez"
+					editorial="Oveja Negra"				precio="300.00"	fecha="2000" />
+	<libro 	paginas="600" nombre="La guerra del fin del mundo"	autor="Mario Vargas Llosa"
+					editorial="El barco de vapor" precio="350.00"	fecha="2010" />
+</libros>

@@ -1,0 +1,153 @@
+SELECT * FROM `excelesdata` where NSS = '09088934832'
+
+SELECT Fila, NSS, Nombre, SBC, Total, Amortizacion FROM `excelesdata` where NSS = '09088934832'
+group by Fila, NSS, Nombre, SBC, Total, Amortizacion 
+
+SELECT Fila, NSS, Nombre  FROM `excelesdata` where NSS = '09088934832'
+group by Fila, NSS, Nombre
+
+29
+30
+115
+115
+
+SELECT NSS, Nombre, SBC, Total, Amortizacion FROM `excelesdata` where NSS = '09088934832'
+group by NSS, Nombre, SBC, Total, Amortizacion
+
+SELECT NSS, Nombre FROM `excelesdata` where NSS = '09088934832'
+group by NSS, Nombre
+
+
+SELECT NSS, SUM(SBC), SUM(Total), SUM(Amortizacion) FROM `excelesdata` where NSS = '09088934832'
+group by NSS
+
+SELECT NSS, SBC, Total, Amortizacion FROM `excelesdata` where NSS = '09088934832'
+
+
+
+/*
+NSS
+NOMBRE
+SBC
+TOTAL
+AMORTIZACIÓN
+*/
+
+SELECT NSS, SUM(SBC), SUM(Total), SUM(Amortizacion) FROM `excelesdata` where NSS = '09088934832'
+group by NSS;
+
+SELECT NSS, SUM(SBC), SUM(Total), SUM(Amortizacion) FROM `excelesdata` where NSS = '09088934832'
+group by NSS, IdExcelesInfo
+
+
+
+SELECT * FROM 
+ExcelesData AS exDat_sua
+INNER JOIN ExcelesData AS exDat_idse ON exDat_idse.NSS = exDat_sua.NSS
+WHERE exDat_sua.NSS = '09088934832'
+
+
+
+SELECT * FROM 
+ExcelesData AS exDat_sua
+INNER JOIN ExcelesData AS exDat_idse ON exDat_idse.NSS = exDat_sua.NSS
+WHERE exDat_sua.IdExcelesInfo = 1 AND exDat_idse.IdExcelesInfo = 2
+
+
+SELECT * FROM 
+ExcelesData AS exDat_sua
+INNER JOIN ExcelesData AS exDat_idse ON exDat_idse.NSS = exDat_sua.NSS
+WHERE exDat_sua.IdExcelesInfo = 1 AND exDat_idse.IdExcelesInfo = 2
+AND exDat_sua.NSS = '09088934832' AND exDat_idse.NSS = '09088934832'
+
+
+	SELECT NSS, SUM(SBC), SUM(Total), SUM(Amortizacion), IdExcelesInfo FROM `excelesdata` where NSS = '09088934832'
+	group by NSS, IdExcelesInfo
+
+
+SELECT exDat_sua.NSS, SUM(exDat_sua.SBC), SUM(exDat_sua.Total), SUM(exDat_sua.Amortizacion), exDat_sua.IdExcelesInfo 
+FROM ExcelesData AS exDat_sua 
+where exDat_sua.NSS = '09088934832'
+group by exDat_sua.NSS, exDat_sua.IdExcelesInfo
+
+SELECT exDat_sua.NSS, SUM(exDat_sua.SBC), SUM(exDat_sua.Total), SUM(exDat_sua.Amortizacion), exDat_sua.IdExcelesInfo 
+FROM ExcelesData AS exDat_sua 
+where exDat_sua.NSS = '09088934832' AND exDat_sua.IdExcelesInfo = 1
+group by exDat_sua.NSS, exDat_sua.IdExcelesInfo
+
+
+SELECT exDat_sua.NSS, SUM(exDat_sua.SBC), SUM(exDat_sua.Total), SUM(exDat_sua.Amortizacion), exDat_sua.IdExcelesInfo 
+FROM ExcelesData AS exDat_sua 
+INNER JOIN ExcelesData AS exDat_idse ON exDat_idse.NSS = exDat_sua.NSS
+WHERE exDat_sua.NSS = '09088934832' AND exDat_sua.IdExcelesInfo = 1
+GROUP BY exDat_sua.NSS, exDat_sua.IdExcelesInfo
+
+
+SELECT 
+exDat_sua.NSS, SUM(exDat_sua.SBC), SUM(exDat_sua.Total), SUM(exDat_sua.Amortizacion), exDat_sua.IdExcelesInfo,
+exDat_idse.NSS, SUM(exDat_idse.SBC), SUM(exDat_idse.Total), SUM(exDat_idse.Amortizacion), exDat_idse.IdExcelesInfo 
+FROM ExcelesData AS exDat_sua 
+INNER JOIN ExcelesData AS exDat_idse ON exDat_idse.NSS = exDat_sua.NSS
+WHERE 
+exDat_sua.NSS = '09088934832' AND exDat_sua.IdExcelesInfo = 1 AND
+exDat_idse.NSS = '09088934832' AND exDat_idse.IdExcelesInfo = 2
+GROUP BY 
+exDat_sua.NSS, exDat_sua.IdExcelesInfo,
+exDat_idse.NSS, exDat_idse.IdExcelesInfo
+
+
+==============================
+
+
+SELECT 
+*
+FROM (
+	SELECT Nombre,
+	NSS AS NSS1, SUM(SBC) AS SBC1, SUM(Total) AS Total1, SUM(Amortizacion) AS Amortizacion1
+	FROM ExcelesData
+	where IdExcelesInfo = (	SELECT Id 
+													FROM excelesinfo 
+													WHERE IdRegistroPatronal = 3 
+													ORDER BY id ASC LIMIT 1
+	) -- AND	NSS = '09088934832' 
+	GROUP BY NSS, IdExcelesInfo
+) AS sua
+INNER JOIN (
+	SELECT NSS AS NSS2, SUM(SBC) AS SBC2, SUM(Total) AS Total2, SUM(Amortizacion) AS Amortizacion2
+	FROM ExcelesData
+	where IdExcelesInfo = (	SELECT Id 
+													FROM excelesinfo 
+													WHERE IdRegistroPatronal = 3 
+													ORDER BY id DESC LIMIT 1
+	)	-- AND NSS = '09088934832' 
+	GROUP BY NSS, IdExcelesInfo
+) AS idse ON idse.NSS2 = sua.NSS1
+
+
+SELECT 
+sua.NSS1 AS NSS, sua.Nombre, 
+sua.SBC1, idse.SBC2, 
+sua.Total1, idse.Total2, 
+sua.Amortizacion1, idse.Amortizacion2
+FROM (
+	SELECT Nombre,
+	NSS AS NSS1, SUM(SBC) AS SBC1, SUM(Total) AS Total1, SUM(Amortizacion) AS Amortizacion1
+	FROM ExcelesData
+	where IdExcelesInfo = (	SELECT Id 
+													FROM excelesinfo 
+													WHERE IdRegistroPatronal = 3 
+													ORDER BY id ASC LIMIT 1
+	) -- AND	NSS = '09088934832' 
+	GROUP BY NSS, IdExcelesInfo
+) AS sua
+INNER JOIN (
+	SELECT 
+	NSS AS NSS2, SUM(SBC) AS SBC2, SUM(Total) AS Total2, SUM(Amortizacion) AS Amortizacion2
+	FROM ExcelesData
+	where IdExcelesInfo = (	SELECT Id 
+													FROM excelesinfo 
+													WHERE IdRegistroPatronal = 3 
+													ORDER BY id DESC LIMIT 1
+	)	-- AND NSS = '09088934832' 
+	GROUP BY NSS, IdExcelesInfo
+) AS idse ON idse.NSS2 = sua.NSS1

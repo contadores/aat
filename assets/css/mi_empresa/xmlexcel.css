@@ -1,0 +1,73 @@
+/* #dropZone{
+		border: 3px dashed #0088cc;
+		padding: 50px;
+		width: 500px;
+}
+
+#files{
+		border: 1px dotted #0088cc;
+		padding: 20px;
+		width: 200px;
+		display: none;
+}
+
+#error{
+		color: red;
+}
+
+
+img{
+	width: 100%;
+}
+ */
+
+#xmlexcel > div:nth-child(2) {
+		/* background-color: blue; */
+		padding: 30px;
+}
+		#xmlexcel > div:nth-child(2) > div.jumbotron{
+				margin-bottom: 0px;
+		}
+
+#xmls_lista{
+		padding: 10px 40px;
+		color: inherit;
+		background-color: #eee;
+}
+	#xmls_lista > #xml_subidos > div{
+			padding: 5px;
+	}
+		#xmls_lista > #xml_subidos > div > .thumbnail{
+				/* background-color: red; */
+				margin-bottom: 0px;
+		}
+
+#xmls_lista > #xml_subidos > div > .thumbnail > .xml-header{
+		width: 100%;
+		padding-right: 3px;
+		/* padding-bottom: 1px; */
+		/* border-bottom: 1px solid #eee; */
+}
+		#xmls_lista > #xml_subidos > div > .thumbnail > .xml-header > button{
+				background: 0 0;
+				border: 0;
+				padding: 0px;
+
+				color: #000;
+				text-shadow: 0 1px 0 #fff;
+				filter: alpha(opacity=20);
+				opacity: .2;
+
+				/* padding: 10px; */
+				/* background-color: blue; */
+		}
+				#xmls_lista > #xml_subidos > div > .thumbnail > .xml-header > button > i{
+						/* background-color: green; */
+						display: inline-block;
+						font-size: 14px;
+				}
+
+#xmls_lista > #xml_subidos > div > .thumbnail > h3{
+		/* background-color: green; */
+		margin-top: 10px;
+}

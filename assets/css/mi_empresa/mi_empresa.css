@@ -1,0 +1,103 @@
+.panel-footer > .panel-contenido{
+	display: inline-block;
+}
+
+		.panel-heading.panel-botones{
+				padding: 5px 0px;
+		}
+				.panel-heading.panel-botones > button.btn-sm{
+						margin: 0px 3px;
+				}
+						/*
+						.panel-heading.panel-botones > button.btn-sm:hover{
+								background-color: white !important;
+								border-color: #4DAF58 !important;
+								color: #4DAF58 !important;
+						}
+						*/
+		.panel-footer.panel-botones{
+				padding: 5px 10px;
+		}
+				.panel-footer.panel-botones > button.btn-xs{
+						height: 31px;
+						padding: 1px 6px;
+				}
+				.panel-footer.panel-botones > button.btn-sm{
+						height: 31px;
+						margin: 0px 1px;
+				}
+				.panel-footer.panel-botones > button.btn-sm:first-child{
+						margin-left: 6px;
+				}
+
+
+.panel-heading > .panel-contenido{
+	display: inline-block;
+}
+
+.table.table-bordered.table-striped.dataTables.dataTable > 
+thead > tr > .th_table_opciones{
+	width: 160px !important;
+}
+/*.panel-heading > .panel-botones{
+	display: inline-block;
+	margin-top: -10px;
+	margin-right: -20px;
+	background-color: blue !important;
+}*/
+
+
+/* CONTENIDO PARCHADO */
+/*
+.sidebar, .main-sidebar, .sidebar > .sidebar-menu, .header, .sidebar-menu ul li, .sidebar-menu li.active{
+	background-color: white !important;
+	color: green !important;
+}
+
+h4, .logo, .sidebar-toggle, .navbar-custom-menu, .navbar, .navbar-static-top{
+	background-color: #307137 !important;
+	color: white !important;	
+}
+*/
+/* END CONTENIDO PARCHADO */
+
+
+.span_user{			font-size: 13px; }
+.span_empresa{	background-color: #923f3f; }
+.span_rp{				background-color: #7d6363; }
+
+
+/* Nuevo Diseño */
+.logo{
+		background-color: #33713A !important;
+}
+.navbar.navbar-static-top,
+.skin-blue .main-header li.user-header {
+		background-color: #42964B !important;
+}
+
+.navbar.navbar-static-top > .sidebar-toggle:hover,
+.btn-success:hover{
+	background-color: #3A8342 !important;
+}
+
+body > .wrapper > aside.main-sidebar > section.sidebar > div.user-panel{
+		padding: 6px;
+}
+ul.sidebar-menu > li.active > a{
+		border-left-color: #42964B !important;
+}
+ul.sidebar-menu > li > a:hover{
+		border-left-color: #3A8342 !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover,
+.btn-success{
+		background-color: #4DAF58 !important;
+		border-color: #4DAF58 !important;
+}
+
+.box.box-primary {
+    border-top-color: #4DAF58 !important;
+}
+

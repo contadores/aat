@@ -1,0 +1,87 @@
+-- Crear Carpeta llamada 'Proyectos'
+mkdir Proyectos
+
+-- Ingresar dentro de la carpeta 'Proyectos'
+cd Proyectos
+
+-- Ver todos los comandos
+git
+
+-- Crear repositorio
+git init
+
+-- Ver archivos en el directorio actual (Ocultos)
+ls -a
+
+-- Ver archivos en el directorio actual
+ls
+
+-- Informa como se encuentra el repositorio   <---
+	git status
+	{
+		On Branch Master
+		Initial commit
+		nothing to commit (create/copy files and use "git add" to track)
+	}
+
+-- Decirle a Git que archivos he modificado
+	git add index.html 
+	git add -A
+
+-- Preparar archivos en el (staged) -- con mensaje
+	git commit -m 
+
+-- Subir archivos preparados. origin = local / master = rama del servidor
+	git push origin master
+
+-- Clave SSH
+https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html#SetupanSSHkey-ssh1
+
+-- Ver Log de actualizaciones comit
+	git log
+
+-- Ver que cosas se han actualizado
+	git diff
+
+--------------- ELIMINAR CAMBIOS:
+	-- Vuelve a la version antes del add
+	git checkout -- index.html
+
+	-- Vuelve a la version donde estaba antes del commit (staged)
+	git reset HEAD index.html
+
+	-- Ver listado de hashs de commits realizados
+	git log -oneline
+
+	-- Ver lo de arriba, pero en la misma ventana.
+	git log -oneline | cat
+
+	-- Eliminar Commit
+	git reset f5f0388 (hash del commit seleccionado)
+
+	-- Eliminar Commit (FOZZADO)
+	git reset --hard f5f0388 
+
+	-- Eliminar Commit y dejarlos en el Stage
+	git reset --soft f5f0388 
+
+--------------- DESHACER CAMBIOS:
+	-- Ver diferencias entre 2 commits
+	git diff hash1 hash2
+
+	-- Ver a donde esta apuntando el apuntador HEAD
+	git log --oneline --decorate
+
+	-- Revierte al comit que queremos deshacer
+	git revert HEAD		-- Esto genera un nuevo Commit con el nombre Revert al comienzo
+
+	-- Revertir los commits sin generar un nuevo Commit Revert, dejandolos en el Stage
+	git revert --no-commit HEAD
+	git revert --no-commit HEAD~1
+	git revert --continue
+
+--------------- RAMAS !!! (Branches)
+
+
+(OTRA COSA)
+wq guardar
