@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['base_url'] = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'http://' : 'https://';
 
-$config['base_url'] .= $_SERVER['HTTP_HOST'].'/miempresa/';
+$config['base_url'] .= $_SERVER['HTTP_HOST'].'/yeyo/';
 
 /*
 |--------------------------------------------------------------------------

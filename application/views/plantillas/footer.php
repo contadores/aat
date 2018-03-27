@@ -172,6 +172,18 @@ switch ($titulo) {
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>
 				<script src="<?=base_url();?>assets/js/mi_empresa/xmlexcel.js"></script>
 		<?php break;
+		case 'ParametrosFI': ?>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>
+				<script src="<?=base_url();?>assets/js/mi_empresa/parametrosFI.js"></script>
+		<?php break;
+		case 'MisEmpresasAuditor': ?>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>
+				<script src="<?=base_url();?>assets/js/mi_empresa/misEmpresasAuditor.js"></script>
+		<?php break;
 		case 'Leyes': ?>
 			<script src="<?=base_url();?>assets/js/mi_empresa/leyes.js"></script>
 		<?php break;

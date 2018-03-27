@@ -34,14 +34,34 @@
 
 							if ( $this->session->userdata('IdCatTipoUsuario') == 2 || 
 									 $this->session->userdata('IdCatTipoUsuario') == 3 ){
-									if ( $this->session->userdata('IdCatTipoUsuario') == 2 ){
+									if ( $this->session->userdata('IdCatTipoUsuario') == 2 ){											
 											array_push($mi_menu, array('seccion' => 'Auditores',
-													'href'                               => 'C_Auditores',
+													'href'                               => 'V_Auditores',
 													'class'                              => 'fa fa-balance-scale',
-													'multilevel'                         => null,
+													'multilevel'                         => array(
+													array('seccion' => 'Mis Empresas',
+													//array('seccion' => 'Registros Patronales',
+															'href'          => 'C_MisEmpresasAuditor',
+															'class'         => 'fa fa-object-ungroup',
+															'multilevel'    => null,
+													), array('seccion' => 'Acumulado',
+															'href'             => 'C_Comparativa',
+															'class'            => 'fa fa-files-o',
+															'multilevel'       => null,
+													), array('seccion' => 'Historial de Comparativas',
+													//), array('seccion' => 'Historico',
+															'href'             => 'C_HistorialComparativas',
+															'class'            => 'fa fa-header',
+															'multilevel'       => null,
+													), array('seccion' => 'Parametros de factor integral',
+													//), array('seccion' => 'Historico',
+															'href'             => 'C_ParametrosFI',
+															'class'            => 'fa fa-file-excel-o',
+															'multilevel'       => null,
+													)),
 											));
 									}
-
+									if ( $this->session->userdata('IdCatTipoUsuario') == 3 ){											
 									array_push($mi_menu, array('seccion' => 'Registros Patronales',
 									//array_push($mi_menu, array('seccion' => 'Mis Empresas',
 											'href'                               => 'C_RegistrosPatronales',
@@ -81,7 +101,7 @@
 									));
 */
 							}
-
+	}
 
 							foreach ($mi_menu as $elementoMenu) {
 									if ($paginaActual == $elementoMenu['href']) {

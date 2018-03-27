@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> 'mysql:host=localhost; dbname=rvoe; charset=utf8',
 	'hostname' => 'localhost',
-	'username' => 'campusparty',
-	'password' => '2tubz6i',
-	'database' => 'MiEmpresa',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'dbcontadores',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

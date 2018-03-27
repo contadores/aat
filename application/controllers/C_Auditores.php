@@ -13,7 +13,7 @@ class C_Auditores extends C_Main
 	public function index()
 	{
 		//$this->load->library('campus_party');
-		$this->load->library('PHPExcel/Classes/PHPExcel');
+	/*	$this->load->library('PHPExcel/Classes/PHPExcel');*/
 		$data = $this->mainHeader();
 		if( $data['IdCatTipoUsuario'] == 2 ){
 			$this->load->view('mi_empresa/V_' . $data['titulo'] . '.php', $data);

@@ -14,7 +14,7 @@
 						<form name="formNuevaEmpresa" class="box-body box-profile">
 							<input type="hidden" class="form-control" id="Id" name="Id" value="0">
 							<input type="hidden" class="form-control" id="IdUsuario" name="IdUsuario" value="0">
-
+							<label><span>Datos generales</span></label>
 							<ul class="list-group list-group-unbordered">
 								<li class="list-group-item">
 									<input type="text" class="form-control" id="Nombre" placeholder="Nombre de la empresa" maxlength="200">
@@ -48,7 +48,7 @@
 								<li class="list-group-item">
 									<input type="text" class="form-control" id="CP" placeholder="CP" maxlength="5">
 								</li>
-							</ul>
+							</ul>							
 								<div class="alert" role="alert" id="VM_EN_Alert"></div>
 
 								<button type="button" id="btnGuardarEmpresa" class="btn btn-primary btn-block"><b>GUARDAR</b></button>
