@@ -19,7 +19,8 @@ function ArmarTablaAdminUsers( data_set ){
 					// html_armado += 			'<i class="fa fa-cubes"></i> &nbsp;&nbsp;';
 					// html_armado +=			empresas[i]['Nombre'];
 					html_armado +=		'</h3>';
-				html_armado +=	'</div>';
+					
+				html_armado +=	'</div>';				
 				html_armado +=	'<div id="rp_collapse' + empresas[i]['Id'] + '" class="panel-collapse collapse  rp_collapse'+empresas[i]['Id']+'">';
 					// END empresas
 
@@ -54,39 +55,24 @@ function ArmarTablaAdminUsers( data_set ){
 			html_armado += 	'</td>';
 
 			html_armado += 	'<td>';
-				html_armado +=	'<div class="panel-heading text-center" data-toggle="collapse" href=".rp_collapse' + empresas[i]['Id'] + '">';
-					html_armado +=		'<i class="fa fa-align-justify"></i>';
-				html_armado +=	'</div>';
-				html_armado +=	'<div id="" class="panel-collapse collapse  rp_collapse'+empresas[i]['Id']+'">';
-					for (var j = 0; j < registrosPatronales.length; j++) {
-						if( registrosPatronales[j]['IdEmpresa'] == empresas[i]['Id']  ){
-							html_armado +=	'<div class="panel-footer panel-botones">';
+			
+				html_armado +=	'<div class="panel-footer panel-botones">';
 
-									html_armado +=		'<button type="button" value="' + registrosPatronales[j]['Id'] + '" ';
-									if( $("#IdRegistroPatronal").val() == registrosPatronales[j]['Id'] ){
-											html_armado +=	'class="btn btn-xs btn-block btn-default" onclick="">';
-											html_armado +=		'<i class="fa fa-check"></i>';
-											html_armado +=		'&nbsp;&nbsp;';
-											html_armado +=		'SELECCIONADO';
-									}else{
-											html_armado +=	'class="btn btn-xs btn-block btn-success" onclick="ObtenerIdRegistroPatronal(this.value);">';
-											html_armado +=		'<i class="fa fa-arrow-right"></i>';
-											html_armado +=		'&nbsp;&nbsp;';
-											html_armado +=		'SELECCIONAR';
-									}
-									
-									html_armado +=		'</button>';
-							html_armado +=	'</div>';
-						}
-					}
-					if( noRP ){
-							html_armado +=	'<div class="panel-footer">';
-							html_armado +=			'&nbsp;';
-							html_armado +=	'</div>';
-					}
-					noRP = true;
-
-				html_armado +=	'</div>';
+							html_armado +=		'<button type="button" value="' + empresas[i]['Id'] + '" ';
+							if( $("#IdEmpresa").val() == empresas[i]['Id']){
+									html_armado +=	'class="btn btn-xs btn-block btn-default" onclick="">';
+									html_armado +=		'<i class="fa fa-check"></i>';
+									html_armado +=		'&nbsp;&nbsp;';
+									html_armado +=		'SELECCIONADO';
+							}else{
+									html_armado +=	'class="btn btn-xs btn-block btn-success" onclick="ObtenerIdEmpresa(this.value);">';
+									html_armado +=		'<i class="fa fa-arrow-right"></i>';
+									html_armado +=		'&nbsp;&nbsp;';
+									html_armado +=		'SELECCIONAR';
+							}
+							
+							html_armado +=		'</button>';
+					html_armado +=	'</div>';
 			html_armado += 	'</td>';
 		html_armado += '</tr>';
 	}
@@ -110,9 +96,9 @@ $(document).ready(function(){
 	fnPrincipal();
 }); /* END $(document).ready */
 
-function ObtenerIdRegistroPatronal( IdRegistroPatronal ){
-	$("#IdRegistroPatronal").val( IdRegistroPatronal );
-	$('#formMisEmpresas').submit();
+function ObtenerIdEmpresa( IdEmpresa ){
+	$("#CambiarEmpresasAuditor").val( IdEmpresa );
+	$('#formCambiarEmpresasAuditor').submit();	
 }
 
 

@@ -28,8 +28,33 @@
 										'RP'
 									));
 							}
-					?>
+				?>
+					<?php		if( $this->session->has_userdata('IdEmpresa') ){?>
+									<!-- Empresa_RP: style can be found in dropdown.less -->
+									<li class="dropdown user user-menu">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
+											<i class="fa fa-cubes"></i>
+											<span class="hidden-xs">
+												&nbsp;
+												<?= $this->session->userdata('Empresa'); ?>
+											</span>										
+
+										</a>
+										<ul class="dropdown-menu">
+											<!-- Menu Footer-->
+											<li class="user-footer">
+												<form action="<?=base_url();?>C_MisEmpresasAuditor" class="box-body" id="formCambiarEmpresasAuditor" name="formCambiarEmpresasAuditor" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+													<input type="text" name="CambiarEmpresasAuditor" id="CambiarEmpresasAuditor" value="true">
+													<button type="submit" class="btn btn-default btn-block" data-dismiss="modal">CAMBIAR EMPRESA</button>
+												</form>
+												<!--<a href="<?=base_url();?>/C_MisEmpresas" class="btn btn-default btn-block">CAMBIAR EMPRESA</a>-->
+											</li>
+										</ul>
+									</li>
+					<?php		}		?>
+
+					
 					<?php		if( $this->session->has_userdata('IdRegistroPatronal') ){		?>
 									<!-- Empresa_RP: style can be found in dropdown.less -->
 									<li class="dropdown user user-menu">
@@ -95,7 +120,9 @@
 													<!--			IdRegistroPatronal			-->
 													<form action="<?=base_url();?>C_MisEmpresas" class="box-body" id="formMisEmpresas" name="formMisEmpresas" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 															<?php	$tmpIdRegistroPatronal = ( $this->session->has_userdata('IdRegistroPatronal')  ) ? $this->session->userdata('IdRegistroPatronal') : 0;	?>			
+															<?php	$tmpIdEmpresa = ( $this->session->has_userdata('IdEmpresa')  ) ? $this->session->userdata('IdEmpresa') : 0;	?>			
 															<input type="hidden" name="IdRegistroPatronal" id="IdRegistroPatronal" value="<?php echo $tmpIdRegistroPatronal; ?>">
+															<input type="hidden" name="IdEmpresa" id="IdEmpresa" value="<?php echo $tmpIdEmpresa; ?>">
 
 													</form>
 													<!-- <input type="hidden" name="IdUsuario" id="IdUsuario" value="<?php echo $this->session->userdata('IdUsuario'); ?>"> -->
@@ -109,7 +136,7 @@
 									}else{
 											header ("Location: " . base_url() );
 									}		
-					?>
+					?>					
 				</ul>
 			</div>
 		</nav>

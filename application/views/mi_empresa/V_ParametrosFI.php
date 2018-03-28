@@ -10,11 +10,11 @@
 							<ul class="list-group list-group-unbordered">
 								<li class="list-group-item">
 									<label>DÍAS AGUINALDO</label>
-									<input type="text" class="form-control" id="Nombre" placeholder="Días de aguinaldo" maxlength="200">
+									<input type="text" class="form-control" id="diasaguinaldo" placeholder="Días de aguinaldo" maxlength="200">
 								</li>
 								<li class="list-group-item">
 									<label>PORCENTAJE PRIMA VACACIONAL</label>
-									<input type="text" class="form-control" id="RFC" placeholder="Porcentaje de prima vacacional" maxlength="12">
+									<input type="text" class="form-control" id="porcentajevacaciones" placeholder="Porcentaje de prima vacacional" maxlength="12">
 								</li>
 							</ul>							
 								<div class="alert" role="alert" id="VM_EN_Alert"></div>

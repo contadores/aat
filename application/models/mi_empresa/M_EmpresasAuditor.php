@@ -34,14 +34,14 @@ class M_EmpresasAuditor extends CI_Model
 	// Singular
 	public function ObtenerEmpresa($viewInfo)
 	{
-		$this->db->select('emp.Id, emp.Nombre, emp.RFC,
+		$this->db->select('emp.Id, emp.Nombre as Empresa, emp.RFC,
 						catMun.IdCatEstado, catEst.Elemento as Estado,
 						emp.IdCatMunicipio, catMun.Elemento as Municipio,
 						emp.Colonia, emp.Calle, emp.Num_ext, emp.Num_int, emp.CP, emp.IdUsuario');
 		$this->db->from('Empresas AS emp');
 		$this->db->join('CatMunicipios AS catMun', 'catMun.Id = emp.IdCatMunicipio', 'inner');
 		$this->db->join('CatEstados AS catEst', 'catEst.Id = catMun.IdCatEstado', 'inner');
-		$this->db->where('emp.Id', $viewInfo['Id']);
+		$this->db->where('emp.Id', $viewInfo['IdEmpresa']);
 		return $this->db->get()->result_array()[0];
 	}
 	// END Singular

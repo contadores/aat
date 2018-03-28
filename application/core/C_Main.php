@@ -29,6 +29,10 @@ class C_Main extends CI_Controller {
 					$this->ObtenerEmpresa_RegistroPatronal( $_POST['IdRegistroPatronal'] );
 			}
 
+			// Configura el IdRegistroPatronal
+			if( isset( $_POST['CambiarEmpresasAuditor'] ) ){		
+					$this->ObtenerEmpresa( $_POST['CambiarEmpresasAuditor'] );
+			}
 
 			// Existe
 			$this->data['CambiarEmpresas'] = ( isset( $_POST['CambiarEmpresas'] ) ) ? true : false;
@@ -68,10 +72,21 @@ class C_Main extends CI_Controller {
 						'IdRegistroPatronal' => $IdRegistroPatronal
 					)
 			);
-
 			$this->session->set_userdata('Empresa',						 $data_set['Empresa']		);
 			$this->session->set_userdata('IdRegistroPatronal', $IdRegistroPatronal		);
 			$this->session->set_userdata('RP',								 $data_set['RP']				);
+	}
+	
+	private function ObtenerEmpresa( $IdEmpresa ){
+			$this->load->model('mi_empresa/M_EmpresasAuditor');
+			$data_set = $this->M_EmpresasAuditor->ObtenerEmpresa(  
+					array( 
+						'IdEmpresa' => $IdEmpresa
+					)
+			);
+
+			$this->session->set_userdata('IdEmpresa', $IdEmpresa		);
+			$this->session->set_userdata('Empresa',	 $data_set['Empresa']	);
 	}
 
 }
