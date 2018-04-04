@@ -29,14 +29,15 @@ class C_Main extends CI_Controller {
 					$this->ObtenerEmpresa_RegistroPatronal( $_POST['IdRegistroPatronal'] );
 			}
 
-			// Configura el IdRegistroPatronal
+			// Configura el IdEmpresa
 			if( isset( $_POST['CambiarEmpresasAuditor'] ) ){		
 					$this->ObtenerEmpresa( $_POST['CambiarEmpresasAuditor'] );
+				
 			}
 
 			// Existe
 			$this->data['CambiarEmpresas'] = ( isset( $_POST['CambiarEmpresas'] ) ) ? true : false;
-
+			$this->data['IdEmpresa'] = ( isset( $_POST['CambiarEmpresasAuditor'] ) ) ?  $_POST['CambiarEmpresasAuditor']  : 0;
 			$this->data['titulo'] = substr($this->uri->segment(1), 2);
 			$this->load->view('plantillas/head.php', $this->data);
 			$this->load->view('plantillas/cargando.php');

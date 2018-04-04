@@ -1,4 +1,4 @@
-<?php print_r( $this->session->userdata() ); ?>
+<?php /*print_r( $this->session->userdata() ); */?>
 	<div class="box">
 		<div class="box-header">
 			<!-- <h3 class="box-title">-</h3> -->

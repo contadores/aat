@@ -88,7 +88,6 @@ function fnPrincipal(){
 $(document).ready(function(){
 	//	V_Usuarios				//
 	$("#btnNuevaEmpresa").on("click", function(e){
-		LimpiarFormNuevaEmpresa();
 		e.preventDefault();
 	});
 

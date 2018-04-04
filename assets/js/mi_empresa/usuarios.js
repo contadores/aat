@@ -124,6 +124,8 @@ function ArmarTablaAdminUsers( data_set ){
 
 	return html_armado;
 }
+
+
 function fnPrincipal(){ ObtenerUsuarios(); }
 
 $(document).ready(function(){

@@ -15,11 +15,13 @@ class C_ParametrosFI extends C_Main
 	{
 		$data = $this->mainHeader();
 		if( $data['IdCatTipoUsuario'] == 2 ){
+			if( $this->session->userdata('IdEmpresa')>0){
 			$this->load->view('mi_empresa/V_' . $data['titulo'] . '.php', $data);
-			$this->load->view('modals/VM_EmpresaDetalles.php');
-			$this->load->view('modals/VM_EmpresaNuevo.php');
-			$this->load->view('modals/VM_RegistroPatronalDetalles.php');
-			$this->load->view('modals/VM_RegistroPatronalNuevo.php');
+			}
+			else
+			{
+			$this->load->view('mi_empresa/V_NoEmpresa.php', $data);			
+			}
 		}else{
 			$this->load->view('support/VS_PaginaNoEncontrada.php', $data);
 		}
@@ -27,25 +29,25 @@ class C_ParametrosFI extends C_Main
 		$this->mainFooter();
 	}
 
-	// Plural
-	public function ObtenerEmpresas()
-	{
-		$viewInfo = $this->input->post();
-		$data_set = $this->M_ParametrosFI->ObtenerEmpresas( $viewInfo );
-		//return $data_set;
-		echo json_encode($data_set);
-	}
 	// END Plural
 
 	// Singular
-	public function ObtenerEmpresa()
-	{
-		$viewInfo = $this->input->post();
-		$data_set = $this->M_ParametrosFI->ObtenerEmpresa($viewInfo);
+	public function ObtenerParametrosFI()
+	{	
+		$data_set = $this->M_ParametrosFI->ObtenerParametrosFI();
 		//Either you can print value or you can send value to database
 		echo json_encode($data_set);
 	}
 	// END Singular
+	
+	
+	public function ObtenerDiasVacacionesFI()
+	{	
+		$data_set = $this->M_ParametrosFI->ObtenerDiasVacacionesFI();
+		//Either you can print value or you can send value to database
+		echo json_encode($data_set);
+	}
+	// END Singular	
 
 	// Guardar
 	public function GuardarParametrosFI()
@@ -57,17 +59,25 @@ class C_ParametrosFI extends C_Main
 		echo json_encode($resultado);
 	}
 	// END Guardar
-
-	// Eliminar
-	public function EliminarEmpresa()
-	{
+	
+	
+	public function GuardarDiasVacacionesFI()
+	{		
+		$file = fopen("locomia.txt", "w");					
+		fwrite($file, $_POST['diasVacaciones'][0]. PHP_EOL); 	
+		fwrite($file, $_POST['diasVacaciones'][1]. PHP_EOL); 	
+		fwrite($file, $_POST['diasVacaciones'][2]. PHP_EOL); 	
+		fwrite($file, $_POST['diasVacaciones'][3]. PHP_EOL); 	
+		fwrite($file, $this->input->post('diasVacaciones')[4]. PHP_EOL); 	
+		fclose($file);
+		
 		$viewInfo  = $this->input->post();
-		$resultado = $this->M_ParametrosFI->EliminarEmpresa($viewInfo);
+		$resultado = $this->M_ParametrosFI->GuardarDiasVacacionesFI($viewInfo);
 
 		//Either you can print value or you can send value to database
 		echo json_encode($resultado);
+	// END Guardar
 	}
-	// END Eliminar
 }
 
 /* End of file C_Empresas.php */

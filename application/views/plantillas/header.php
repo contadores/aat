@@ -29,7 +29,14 @@
 									));
 							}
 				?>
-					<?php		if( $this->session->has_userdata('IdEmpresa') ){?>
+				<div style="display:none;">
+					<form action="<?=base_url();?>C_MisEmpresasAuditor" class="box-body" id="formCambiarEmpresasAuditor" name="formCambiarEmpresasAuditor" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+													<input type="hidden" name="CambiarEmpresasAuditor" id="CambiarEmpresasAuditor" value="true">
+													<button type="submit" class="btn btn-default btn-block" data-dismiss="modal">CAMBIAR EMPRESA</button>
+												</form>
+												</div>
+					<?php	
+					if( $this->session->has_userdata('IdEmpresa') ){?>
 									<!-- Empresa_RP: style can be found in dropdown.less -->
 									<li class="dropdown user user-menu">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -45,7 +45,7 @@
 															'class'         => 'fa fa-object-ungroup',
 															'multilevel'    => null,
 													), array('seccion' => 'Acumulado',
-															'href'             => 'C_Comparativa',
+															'href'             => 'C_AcumuladoAuditor',
 															'class'            => 'fa fa-files-o',
 															'multilevel'       => null,
 													), array('seccion' => 'Historial de Comparativas',
