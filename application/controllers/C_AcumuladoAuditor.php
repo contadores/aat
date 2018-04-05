@@ -352,8 +352,16 @@ $colSueldo='H';
 	{
 		//Validamos que el archivo exista
 		if($_FILES["archivo"]["name"][$key]) {
-			$filename = $_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
+		$nombrebre_orig = $_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
 			$source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
+			
+			
+			 //see what extension on file image 
+			  $array_nombre = explode('.',$nombrebre_orig);
+			  $cuenta_arr_nombre = count($array_nombre);
+			  $extension = strtolower($array_nombre[--$cuenta_arr_nombre]);
+			
+			$filename = time().'_'.rand(0,100).'.'.$extension;
 			
 			$directorio = APPPATH.'docs/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
 			
@@ -443,6 +451,8 @@ $colSueldo='H';
 		}
 	}   
 }
+
+
 
 // Redirect output to a client’s web browser (Excel2007)
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

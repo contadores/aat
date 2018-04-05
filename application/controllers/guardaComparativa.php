@@ -396,15 +396,7 @@ $colSueldo='H';
 			}
 			closedir($dir); //Cerramos el directorio de destino
 			
-			$files = [$directorio.'/'.$filename];
-
-			foreach ($files as $file) {
-				if (file_exists($file)) {
-					unlink($file);
-				} else {
-					// File not found.
-				}
-			}
+			
 		}
 	}   
 }

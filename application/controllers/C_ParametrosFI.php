@@ -63,13 +63,13 @@ class C_ParametrosFI extends C_Main
 	
 	public function GuardarDiasVacacionesFI()
 	{		
-		$file = fopen("locomia.txt", "w");					
+		/*$file = fopen("locomia.txt", "w");					
 		fwrite($file, $_POST['diasVacaciones'][0]. PHP_EOL); 	
 		fwrite($file, $_POST['diasVacaciones'][1]. PHP_EOL); 	
 		fwrite($file, $_POST['diasVacaciones'][2]. PHP_EOL); 	
 		fwrite($file, $_POST['diasVacaciones'][3]. PHP_EOL); 	
 		fwrite($file, $this->input->post('diasVacaciones')[4]. PHP_EOL); 	
-		fclose($file);
+		fclose($file);*/
 		
 		$viewInfo  = $this->input->post();
 		$resultado = $this->M_ParametrosFI->GuardarDiasVacacionesFI($viewInfo);
