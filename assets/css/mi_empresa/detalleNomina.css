@@ -1,0 +1,13 @@
+.divIconsRight{
+	text-align:right;
+	margin-bottom:10px;
+}
+.icons {
+	padding:5px;
+}
+
+.icons:hover {
+	background-color:#cbfdcb;
+	cursor: pointer;
+}
+

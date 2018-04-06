@@ -59,8 +59,9 @@
 		case 'Empresas': ?>
 			<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/empresas.css">
 		<?php break;
-
-
+		case 'DetalleNomina': ?>
+			<link rel="stylesheet" href="<?=base_url();?>assets/css/mi_empresa/detalleNomina.css">							
+		<?php break;
 		case 'Comparativa': ?>
 			<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/comparativa.css">
 		<?php break;

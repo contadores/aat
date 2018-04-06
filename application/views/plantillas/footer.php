@@ -178,6 +178,11 @@ switch ($titulo) {
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>
 				<script src="<?=base_url();?>assets/js/mi_empresa/parametrosFI.js"></script>
 		<?php break;
+		case 'DetalleNomina': ?>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>				
+		<?php break;
 		case 'MisEmpresasAuditor': ?>
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
