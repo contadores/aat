@@ -1,27 +1,15 @@
-	<div class="box"  id="DetalleNomina">
+	<div class="box" name="DetalleNomina"  id="DetalleNomina">
 		<div class="box-header">		
 			<div class="divIconsRight">						
-				<i class="glyphicon glyphicon-filter icons" data-toggle="modal" data-target="#FiltroDetalleNomina"></i>				
-				<i class="glyphicon glyphicon-download-alt icons"  data-toggle="modal" data-target="#AcumuladoDetalleNomina"></i>									
-				<i class="glyphicon glyphicon-file icons"  data-toggle="modal" data-target="#DetalleXML"></i>									
+				<i id="iconFiltro" class="glyphicon glyphicon-filter icons" data-toggle="modal" data-target="#FiltroDetalleNomina"></i>				
+				<i id="iconDownload" class="glyphicon glyphicon-download-alt icons"  data-toggle="modal" data-target="#AcumuladoDetalleNomina"></i>													
 			</div>
-			<div class="box box-primary">				
+			<div class="box box-primary">	
+				<div style="height:10px;" class="row">
+				</div>				
+				<!-- XML filtrados -->
+				<div id="box-filtrado">
+				</div>
 			</div>
-		</div>
-
-		<div class="box-body">
-			
-		</div>
-		<!-- /.box-body -->
-
+		</div>			
 	</div>
-
-<?php 
-function obtenerMes($num_mes){
-	$texto_mes = '';
-
-
-	return $texto_mes;
-}
-
-?>

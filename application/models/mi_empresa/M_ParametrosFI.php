@@ -9,45 +9,113 @@ class M_ParametrosFI extends CI_Model
 	}
 	
 	// Singular
-	public function ObtenerParametrosFI()
+	public function ObtenerUMA($viewInfo)
 	{		
-		$this->db->select('pfi.IdPorcentajes as IdPorcentajes	
+		$queryValidarParametrosFI = $this->db->query('
+			select 1
+			from parametrosuma AS pu
+			where pu.anioPeriodoUMA ='.$viewInfo["anioPeriodoUMA"].'		
+		');
+		if ($queryValidarParametrosFI->num_rows() > 0)
+		{
+		$this->db->select('idUMA ,IFNULL(pu.UMA,0) as UMA, anioPeriodoUMA as anioPeriodoUMA
+			');
+		$this->db->from('parametrosuma AS pu');
+		$this->db->where('pu.anioPeriodoUMA', $viewInfo['anioPeriodoUMA']);	
+		$reault_array = $this->db->get()->result_array();	
+		return $reault_array[0];	
+		}
+		else
+		{
+			$this->db->select('
+			0 as idUMA 
+			,0 as UMA
+			,'.$viewInfo["anioPeriodoUMA"].' as anioPeriodoUMA
+			');
+			$reault_array = $this->db->get()->result_array();	
+			return $reault_array[0];		
+		}					
+	}
+	// END Singular
+	
+	// Singular
+	public function ObtenerParametrosFI($viewInfo)
+	{		
+		$queryValidarParametrosFI = $this->db->query('
+			select 1
+			from porcentajesfactorintegracionfi AS pfi
+			where pfi.IdEmpresa='.$this->session->userdata('IdEmpresa').'
+			AND pfi.anioPeriodoPorcentajes ='.$viewInfo['anioPeriodoPorcentajes'].'		
+		');
+		if ($queryValidarParametrosFI->num_rows() > 0)
+		{
+			$this->db->select('pfi.IdPorcentajes as IdPorcentajes	
 			,pfi.IdEmpresa as IdEmpresa		
 			,pfi.diasAguinaldo as diasAguinaldo
+			,pfi.anioPeriodoPorcentajes
 			,pfi.porcentajePrimaVacacional as porcentajePrimaVacacional
 			');
-		$this->db->from('porcentajesfactorintegracionfi AS pfi');
-		$this->db->where('pfi.IdEmpresa',$this->session->userdata('IdEmpresa'));	
-		$reault_array = $this->db->get()->result_array();	
-		return $reault_array[0];
-		
+			$this->db->from('porcentajesfactorintegracionfi AS pfi');
+			$this->db->where('pfi.IdEmpresa',$this->session->userdata('IdEmpresa'));	
+			$this->db->where('pfi.anioPeriodoPorcentajes', $viewInfo['anioPeriodoPorcentajes']);	
+			$reault_array = $this->db->get()->result_array();	
+			return $reault_array[0];		
+		}
+		else
+		{
+			$this->db->select('0 as IdPorcentajes	
+			,'.$this->session->userdata('IdEmpresa').' as IdEmpresa		
+			,"" as diasAguinaldo
+			,'.$viewInfo['anioPeriodoPorcentajes'].' as anioPeriodoPorcentajes
+			,"" as porcentajePrimaVacacional
+			');
+			$reault_array = $this->db->get()->result_array();	
+			return $reault_array[0];		
+		}			
 	}
 	// END Singular
 	
 	// Obtiene los dias de vacaciones, si es personalizado por empresa o los default
-	public function ObtenerDiasVacacionesFI()
+	public function ObtenerDiasVacacionesFI($viewInfo)
 	{
 		
 		$this->db->select('count(IdDiasVacaciones) as countDias');
 		$this->db->from('diasvacacionesfi AS dvfi');
-		$this->db->where('dvfi.IdEmpresa',$this->session->userdata('IdEmpresa'));	
+		$this->db->where('dvfi.IdEmpresa',$this->session->userdata('IdEmpresa'));			
 		$result_arrayBusqueda = $this->db->get()->result_array();
 	
 
 		if ($result_arrayBusqueda[0]['countDias'] >1 ) {			
-		
-		$this->db->select('dvfi.aniosTrabajados as aniosTrabajados, dvfi.diasVacaciones as diasVacaciones		
+			$queryValidarDiasVacaciones = $this->db->query('
+				select 1
+				from diasvacacionesfi AS dvfi
+				where dvfi.IdEmpresa='.$this->session->userdata('IdEmpresa').'
+				AND dvfi.anioPeriodoVacaciones ='.$viewInfo['anioPeriodoVacaciones'].'		
 			');
-		$this->db->from('diasvacacionesfi AS dvfi');
-		$this->db->where('dvfi.IdEmpresa',$this->session->userdata('IdEmpresa'));	
-		$reault_array = $this->db->get()->result_array();	
-		return $reault_array;
+			if ($queryValidarDiasVacaciones->num_rows() > 0)
+			{
+				$this->db->select('dvfi.aniosTrabajados as aniosTrabajados, dvfi.diasVacaciones as diasVacaciones		
+					');
+				$this->db->from('diasvacacionesfi AS dvfi');
+				$this->db->where('dvfi.IdEmpresa',$this->session->userdata('IdEmpresa'));	
+				$this->db->where('dvfi.anioPeriodoVacaciones', $viewInfo['anioPeriodoVacaciones']);	
+				$reault_array = $this->db->get()->result_array();	
+				return $reault_array;
+			}
+			else
+			{
+				$this->db->select('dv.aniosTrabajados as aniosTrabajados,dv.diasVacaciones as diasVacaciones		
+				');
+				$this->db->from('diasvacaciones AS dv');		
+				$this->db->order_by('IdDiasVacaciones');
+				return $this->db->get()->result_array();
+			}
 		}
 		else
 		{				
 		$this->db->select('dv.aniosTrabajados as aniosTrabajados,dv.diasVacaciones as diasVacaciones		
 			');
-		$this->db->from('diasvacaciones AS dv');
+		$this->db->from('diasvacaciones AS dv');		
 		$this->db->order_by('IdDiasVacaciones');
 		return $this->db->get()->result_array();
 		}				
@@ -57,7 +125,15 @@ class M_ParametrosFI extends CI_Model
 	
 	// END Singular	
 	
-	
+	public function GuardarUMA($viewInfo)
+	{			
+		if ($viewInfo['idUMA'] == 0) {			
+		return ($this->db->insert('parametrosuma', $viewInfo)) ? true : false;
+		} else {
+			$this->db->where('idUMA', $viewInfo['idUMA']);
+			return ($this->db->update('parametrosuma', $viewInfo)) ? true : false;
+		}
+	}
 	// Guardar
 	public function GuardarParametrosFI($viewInfo)
 	{			
@@ -68,37 +144,6 @@ class M_ParametrosFI extends CI_Model
 			$this->db->where('IdPorcentajes', $viewInfo['IdPorcentajes']);
 			return ($this->db->update('porcentajesfactorintegracionfi', $viewInfo)) ? true : false;
 		}
-		
-		//Iniciamos la transacción.    
-			/*
-			
-			
-			
-			$this->db->select('pfi.IdEmpresa as IdEmpresa');
-		$this->db->from('porcentajesfactorintegracionfi AS pfi');
-		$this->db->where('pfi.IdEmpresa',$this->session->userdata('IdEmpresa'));	
-		$reault_array = $this->db->get()->result_array();		
-
-		if ($reault_array[0]['IdEmpresa'] < 1) {			
-			return ($this->db->insert('porcentajesfactorintegracionfi', $viewInfo)) ? true : false;
-		} else {
-			$this->db->where('IdPorcentajes', $viewInfo['IdPorcentajes']);
-			return ($this->db->update('porcentajesfactorintegracionfi', $viewInfo)) ? true : false;
-		}
-			
-			$this->db->trans_begin();  
-				$sql = "insert into porcentajesfactorintegracionfi (idEmpresa,diasAguinaldo, porcentajePrimaVacacional)
-					values (10,15 ,0.25)";
-				$this->db->query($sql);
-			if(	$this->db->trans_status() === FALSE ){
-					//Hubo errores en la consulta, entonces se cancela la transacción.
-					$this->db->trans_rollback();
-					return false;
-			}else{
-					//Todas las consultas se hicieron correctamente.
-					$this->db->trans_commit();
-					return true;
-			}*/
 	}
 	// END Guardar
 
@@ -107,7 +152,17 @@ class M_ParametrosFI extends CI_Model
 	
 	// Guardar dias vacaciones
 	public function GuardarDiasVacacionesFI($viewInfo)
-	{			
+	{		
+		foreach ($viewInfo as $record) 
+		{
+			for ($i=0; $i < count($record); $i++) 
+			{   
+			$data[$i]['aniosTrabajados'] = $i;		
+			$data[$i]['diasVacaciones'] = $record[$i];		
+			$data[$i]['IdEmpresa'] =  $this->session->userdata('IdEmpresa');					
+			$data[$i]['anioPeriodoVacaciones'] =  $viewInfo['anioPeriodoVacaciones'];					
+			}
+		}	
 		/*$file = fopen("locomia2.txt", "w");							
 		foreach ($viewInfo as $record) 
 		{
@@ -119,24 +174,14 @@ class M_ParametrosFI extends CI_Model
 			}
 		}
 		fclose($file);*/
-		
+		$this->db->trans_start();
 		$this->db->where('IdEmpresa', $this->session->userdata('IdEmpresa'));
-		$this->db->delete('diasvacacionesfi');	
-		
-		foreach ($viewInfo as $record) 
-		{
-			for ($i=0; $i < count($record); $i++) 
-			{   
-			$data[$i]['aniosTrabajados'] = $i;		
-			$data[$i]['diasVacaciones'] = $record[$i];		
-			$data[$i]['IdEmpresa'] =  $this->session->userdata('IdEmpresa');					
-			}
-		}
+		$this->db->where('anioPeriodoVacaciones',  $viewInfo['anioPeriodoVacaciones']);
+		$this->db->delete('diasvacacionesfi');				
 		
 		//$this->db->set('YOUR_COL_1', 'YOUR_VALUR_1');
 		$this->db->insert_batch('diasvacacionesfi', $data);	
-		
-		return true;		
+		$this->db->trans_complete();	
 	}
 	// END Guardar
 	

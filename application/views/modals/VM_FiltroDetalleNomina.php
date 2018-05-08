@@ -11,81 +11,40 @@
 
 					<!-- Profile Image -->
 					<div class="box box-primary">
-						<form name="formNuevoUsuario" class="box-body box-profile">
-							<input type="hidden" class="form-control" id="Id" name="Id" value="0">
-
-							<div style="text-align:right;" class="col-xs-3 col-xs-offset-0">
-								<label>Fecha</label>
-							</div >
-							<div class="col-xs-4 col-xs-offset-0">								
-								<input class="form-control"  type="date"></input>								
-							</div>
-							<div  class="col-xs-1 col-xs-offset-0">
-								<label> - </label>
-							</div>
-							<div class="col-xs-4 col-xs-offset-0">								
-								<input class="form-control"  type="date"></input>
-							</div>
-							
-							<div class="col-xs-12 col-xs-offset-0" style="margin-bottom:10px;">							
-							</div>
-							
-							<div style="text-align:right;" class="col-xs-3 col-xs-offset-0">
-								<label>Folio</label>
-							</div >
-							<div  class="col-xs-9 col-xs-offset-0">								
-								<input placeholder="" class="form-control"  type="text"></input>								
-							</div>
-							<div class="col-xs-12 col-xs-offset-0" style="margin-bottom:10px;">							
-							</div>
-							
-							<div style="text-align:right;" class="col-xs-3 col-xs-offset-0">
-								<label>Empleado</label>
-							</div >
-							<div  class="col-xs-9 col-xs-offset-0">								
-								<input placeholder="Nombre empleado" class="form-control"  type="text"></input>								
-							</div>
-							
-							<div class="col-xs-12 col-xs-offset-0" style="margin-bottom:10px;">							
-							</div>
-							
-							<div style="text-align:right;" class="col-xs-3 col-xs-offset-0">
-								<label>NSS</label>
-							</div >
-							<div  class="col-xs-9 col-xs-offset-0">								
-								<input placeholder="Número Seguridad Social" class="form-control"  type="text"></input>								
-							</div>
-							
-							<div class="col-xs-12 col-xs-offset-0" style="margin-bottom:10px;">							
-							</div>
-							
-							<div style="text-align:right;" class="col-xs-3 col-xs-offset-0">
-								<label>Registro patronal</label>
-							</div >
-							<div  class="col-xs-9 col-xs-offset-0">								
-								<input placeholder="Registro patronal" class="form-control"  type="text"></input>								
-							</div>
-							
-							<div class="col-xs-12 col-xs-offset-0" style="margin-bottom:10px;">							
-							</div>
-							
-							<div style="text-align:right;" class="col-xs-3 col-xs-offset-0">
-								<label>Total</label>
-							</div >
-							<div class="col-xs-4 col-xs-offset-0">								
-								<input placeholder="mínimo" class="form-control"  type="text"></input>								
-							</div>
-							<div  class="col-xs-1 col-xs-offset-0"><label> - </label></div>
-							<div class="col-xs-4 col-xs-offset-0">								
-								<input placeholder="máximo" class="form-control"  type="text"></input>
-							</div>
-							
-							<div class="col-xs-12 col-xs-offset-0" style="margin-bottom:10px;">							
-							</div>
-							
-							<div class="alert" role="alert" id="VM_UN_Alert"></div>
-							<div class="divIconsRight">
-							<button type="button" id="btnGuardarUsuario" class="btn btn-primary "><b>BUSCAR</b></button>
+						<form name="formFiltroXML" class="box-body box-profile">							
+							<ul class="list-group list-group-unbordered">
+								<li class="list-group-item">
+									<label>Fecha Inicio</label>
+									<input class="form-control" id="fechaInicio" name="fechaInicio" type="date"></input>								
+									<label>Fecha Fin</label>
+									<input class="form-control" id="fechaFin" name="fechaFin" type="date"></input>								
+								</li>							
+								<li class="list-group-item">
+									<label>Folio</label>
+									<input placeholder="Folio" id="folio" name="folio" class="form-control"  type="text"></input>																	
+								</li>
+								<li class="list-group-item">
+									<label>Empleado</label>
+									<input placeholder="Nombre empleado" id="empleado" name="empleado" class="form-control"  type="text"></input>								
+								</li>
+								<li class="list-group-item">
+									<label>NSS</label>
+									<input placeholder="Número Seguridad Social" id="nss" name="nss" class="form-control"  type="text"></input>								
+								</li>			
+								<li class="list-group-item">
+									<label>Registro patronal</label>
+									<input placeholder="Registro patronal" id="registroPatronal" name="registroPatronal" class="form-control"  type="text"></input>								
+								</li>			
+								<li class="list-group-item">
+									<label>Total Mínimo</label>
+									<input placeholder="mínimo" id="totalMin" name="totalMin" class="form-control"  type="text"></input>								
+									<label>Total Máximo</label>
+									<input placeholder="máximo" id="totalMax" name="totalMax" class="form-control"  type="text"></input>
+								</li>											
+							</ul>									
+							<div class="alert" role="alert" id="VM_EN_Alert"></div>
+							<div class="divIconsRight">							
+							<button type="button" id="btnFiltrarXML" class="btn btn-primary "><b>BUSCAR</b></button>
 							<button type="button" class="btn btn-default " data-dismiss="modal">CERRAR</button>
 							</div>
 						</form>

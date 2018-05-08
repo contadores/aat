@@ -13,12 +13,13 @@
 					<div class="box box-primary">
 						<form name="formNuevoUsuario" class="box-body box-profile">
 							<input type="hidden" class="form-control" id="Id" name="Id" value="0">
-
-							<input type="radio" name="acumulado" value="acumulado"  checked="checked" > Acumulado<br>
-							<input type="radio" name="detalle" value="detalle"> Detalle<br>
+							<div id="tipoAcumulado">
+							<input type="radio" id="op1" name="tipoAcumulado" value="0" checked="checked" > Acumulado<br>
+							<input type="radio" id="op2" name="tipoAcumulado" value="1"> Detalle<br>
+							</div>
 							<div class="alert" role="alert" id="VM_UN_Alert"></div>
 
-								<button type="button" id="btnGuardarUsuario" class="btn btn-primary btn-block"><b>ACEPTAR</b></button>
+								<button type="button" id="btnDescargarAcumulado" name="btnDescargarAcumulado" class="btn btn-primary btn-block"><b>ACEPTAR</b></button>
 								<button type="button" class="btn btn-default btn-block" data-dismiss="modal">CERRAR</button>
 						</form>
 						<!-- /.box-body -->

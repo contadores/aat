@@ -2,7 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="myApp">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,7 +46,9 @@
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="<?= base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-
+ <script data-require="angular.js@*" data-semver="2.0.0" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+    <script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	
 	<!-- Estilo Extra -->	
 	<link rel="stylesheet" href="<?= base_url();?>assets/css/core.css">
 	<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/mi_empresa.css">
@@ -61,6 +63,7 @@
 		<?php break;
 		case 'DetalleNomina': ?>
 			<link rel="stylesheet" href="<?=base_url();?>assets/css/mi_empresa/detalleNomina.css">							
+			<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<?php break;
 		case 'Comparativa': ?>
 			<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/comparativa.css">
@@ -82,6 +85,9 @@
 			<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/formatos.css">
 		<?php break;
 		case 'Auditores': ?>
+			<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/auditores.css">
+		<?php break;
+		case 'AcumuladoAuditor': ?>
 			<link rel="stylesheet" href="<?= base_url();?>assets/css/mi_empresa/auditores.css">
 		<?php break;
 	}

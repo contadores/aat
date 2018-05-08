@@ -11,3 +11,47 @@
 	cursor: pointer;
 }
 
+.bordesRegion{
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	border: 2px solid #615f61;
+}
+
+.center {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-left: -50%; /* margin is -0.5 * dimension */
+    margin-top: 100px; 
+}
+
+.encabezadoTblColsPrincipales{
+	background-color:#ffff66;
+}
+
+.encabezadoTblColsPercepciones{
+	background-color:#ff9933;
+	display:none;
+}
+.encabezadoTblColsDeducciones{
+	background-color:#ff9933;
+	display:none;
+}
+.encabezadoTblColsTotalPercepciones{
+	background-color:#ff9933;
+	display:none;
+}
+.encabezadoTblColsTotalDeducciones{
+	background-color:#ff9933;
+	display:none;
+}
+.cuerpoTablaXLSConceptos{
+	display:none;
+}
+
+.pieTablaXLSConceptos{
+	display:none;
+}

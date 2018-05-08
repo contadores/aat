@@ -76,7 +76,7 @@ function ArmarTablaDiasVacaciones_Footer( ths = null ){
 
 
 var $formDiasVacaciones = $("form[name=formDiasVacaciones]");
-
+var $formUMA = $("form[name=formUMA]");
 
 var $formNuevaEmpresa = $("form[name=formNuevaEmpresa]");
 
@@ -86,7 +86,10 @@ function LimpiarFormNuevaEmpresa(){
 }
 
 
-function fnPrincipal(){ ObtenerDiasVacacionesFI(); }
+function fnPrincipal(){ 
+
+ObtenerDiasVacacionesFI(); 
+}
 
 
 $(document).ready(function(){	
@@ -97,6 +100,7 @@ $(document).ready(function(){
 		
 		fnPrincipal();
 		ObtenerParametrosFI();
+		ObtenerUMA();
 		
 		$formNuevaEmpresa.find("#btnGuardarPorcentajes").on("click", function(e){				
 				GuardarPorcentajesFI();
@@ -108,6 +112,25 @@ $(document).ready(function(){
 				e.preventDefault();
 		});		
 		
+		$formUMA.find("#btnGuardarUMA").on("click", function(e){				
+				GuardarUMA();
+				e.preventDefault();
+		});		
+		
+		$formUMA.find("#anioPeriodoUMA").on("change", function(e){				
+				ObtenerUMA();
+				e.preventDefault();
+		});		
+		
+		$formNuevaEmpresa.find("#anioPeriodoPorcentajes").on("change", function(e){				
+				ObtenerParametrosFI();
+				e.preventDefault();
+		});		
+		
+		$formDiasVacaciones.find("#anioPeriodoVacaciones").on("change", function(e){				
+				ObtenerDiasVacacionesFI();
+				e.preventDefault();
+		});		
 });
 
 
@@ -161,6 +184,55 @@ function GuardarPorcentajesFI(){
 }
 
 
+function GuardarUMA(){	
+		var urlPHP = "C_ParametrosFI/GuardarUMA/";
+		var datos = FormularioData('formUMA');
+		$formUMA.find('#btnGuardarUMA').prop('disabled', true);
+	if( Validar_VM_UMA(  FormularioData('formUMA')  ) ){
+				AjaxFunction(urlPHP, datos, function(response){				
+						//console.log(response);
+						var alert_data = [];
+						alert_data['alert_id']		= 'UMA_EN_Alert';
+						alert_data['alert_class']	= 'alert-success';
+
+						if(	datos['idUMA'] == 0 ){
+								alert_data['txt']	= 'SE HA GUARDADO CORRECTAMENTE';
+								// alert('se ha guardado correctamente');
+								ObtenerUMA();
+						}else{
+								alert_data['txt']	= 'SE HA ACTUALIZADO CORRECTAMENTE';
+								// alert('Se ha actualizado correctamente');
+						}
+
+						alert_data['btn']					= '#btnGuardarUMA';
+						Show_Alert( alert_data );
+
+						fnPrincipal();
+
+						if(	datos['idUMA'] == 0 ){
+								$("form[name=formUMA]")[0].reset();
+						}
+
+				},function(textStatus){				
+						var alert_data = [];
+						alert_data['alert_id']		= 'UMA_EN_Alert';
+						alert_data['alert_class']	= 'alert-warning';
+						alert_data['txt']					= 'HA OCURRIDO UN PROBLEMA';
+						alert_data['btn']					= '#btnGuardarUMA';
+						Show_Alert( alert_data );
+						console.log(textStatus);
+				});
+		}else{
+				var alert_data = [];
+				alert_data['alert_id']		= 'UMA_EN_Alert';
+				alert_data['alert_class']	= 'alert-danger';
+				alert_data['txt']					= 'HA OCURRIDO UN PROBLEMA ';
+				alert_data['btn']					= '#btnGuardarUMA';
+				Show_Alert( alert_data );
+		}
+	}
+
+
 function GuardarDiasVacacionesFI(){	
 		var urlPHP = "C_ParametrosFI/GuardarDiasVacacionesFI/";
 		var datos = FormularioData('formDiasVacaciones');
@@ -186,15 +258,21 @@ function GuardarDiasVacacionesFI(){
 }
 
 
-function ObtenerParametrosFI(){		
-		var urlPHP = "C_ParametrosFI/ObtenerParametrosFI/";
-		var datos = {};		
+function ObtenerParametrosFI(){	
+		var urlPHP = "C_ParametrosFI/ObtenerParametrosFI/";	
+		var datos = FormularioData('formNuevaEmpresa');		
 		AjaxFunction(urlPHP, datos, function(response){			
 			LlenarCamposDeFormulario( 'formNuevaEmpresa', response );								
 		});		
 }
 
-
+function ObtenerUMA(){	
+		var urlPHP = "C_ParametrosFI/ObtenerUMA/";
+		var datos = FormularioData('formUMA');		
+		AjaxFunction(urlPHP, datos, function(response){			
+			LlenarCamposDeFormulario( 'formUMA', response );								
+		});		
+}
 
 function Validar_VM_EmpresaNueva( datos ){	// console.log( datos );
 		//console.log(datos);
@@ -221,6 +299,24 @@ function Validar_VM_EmpresaNueva( datos ){	// console.log( datos );
 }
 
 
+function Validar_VM_UMA( datos ){	// console.log( datos );
+		//console.log(datos);
+		var valido = true;
+		var form_error  = '#dd4b39';
+		var form_valido = '#d2d6de';
+
+
+		if( datos['UMA'] == '' ||  datos['UMA'] == null || datos['UMA'] == ' '){
+				$formUMA.find('#UMA').css('border-color', form_error);
+				valido = false;
+		}else{
+				$formUMA.find('#UMA').css('border-color', form_valido);
+		}		
+
+		// console.log(valido);
+		return valido;
+}
+
 
 function Validar_VM_DiasVacaciones( datos ){	// console.log( datos );
 		//console.log(datos);
@@ -245,8 +341,7 @@ function Validar_VM_DiasVacaciones( datos ){	// console.log( datos );
 // Se obtiene del archivo modals/usuarios.js
 function ObtenerDiasVacacionesFI( data_set = {} ){
 		var urlPHP = "C_ParametrosFI/ObtenerDiasVacacionesFI/";
-		var datos = {	};
-		
+		var datos = FormularioData('formDiasVacaciones');		
 		AjaxFunction(urlPHP, datos, function(response){
 			data_set['usuarios'] = response;
 		var html_armado = '';

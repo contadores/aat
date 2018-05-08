@@ -58,6 +58,10 @@
 															'href'             => 'C_ParametrosFI',
 															'class'            => 'fa fa-file-excel-o',
 															'multilevel'       => null,
+													), array('seccion' => 'MisXML',
+															'href'             => 'C_MisXML',
+															'class'            => 'fa fa-files-o',
+															'multilevel'       => null,
 													)),
 											));
 									}
@@ -85,6 +89,10 @@
 													//), array('seccion' => 'Historico',
 															'href'             => 'C_XmlExcel',
 															'class'            => 'fa fa-file-excel-o',
+															'multilevel'       => null,
+													), array('seccion' => 'MisXML',
+															'href'             => 'C_MisXML',
+															'class'            => 'fa fa-files-o',
 															'multilevel'       => null,
 													)),
 									));

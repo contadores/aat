@@ -182,6 +182,14 @@ switch ($titulo) {
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>				
+				<script src="<?=base_url();?>assets/js/mi_empresa/XMLDetalle.js"></script>				
+				<script src="<?=base_url();?>assets/js/modals/filtroXMLDetalle.js"></script>
+				
+		<?php break;
+		case 'MisXML': ?>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>										
 		<?php break;
 		case 'MisEmpresasAuditor': ?>
 				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
@@ -196,6 +204,12 @@ switch ($titulo) {
 			<script src="<?=base_url();?>assets/js/mi_empresa/formatos.js"></script>
 		<?php break;
 		case 'Auditores': ?>
+			<script src="<?=base_url();?>assets/js/mi_empresa/auditores.js"></script>
+		<?php break;
+		case 'AcumuladoAuditor': ?>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/vendor/jquery.ui.widget.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.iframe-transport.js"></script>
+				<script src="<?=base_url();?>assets/js/jquery_file_upload/jquery.fileupload.js"></script>
 			<script src="<?=base_url();?>assets/js/mi_empresa/auditores.js"></script>
 		<?php break;
 }

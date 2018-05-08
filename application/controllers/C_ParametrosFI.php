@@ -31,10 +31,21 @@ class C_ParametrosFI extends C_Main
 
 	// END Plural
 
+		// Singular
+	public function ObtenerUMA()
+	{	
+		$viewInfo  = $this->input->post();
+		$data_set = $this->M_ParametrosFI->ObtenerUMA($viewInfo);
+		//Either you can print value or you can send value to database
+		echo json_encode($data_set);
+	}
+	// END Singular
+	
 	// Singular
 	public function ObtenerParametrosFI()
 	{	
-		$data_set = $this->M_ParametrosFI->ObtenerParametrosFI();
+		$viewInfo  = $this->input->post();
+		$data_set = $this->M_ParametrosFI->ObtenerParametrosFI($viewInfo);
 		//Either you can print value or you can send value to database
 		echo json_encode($data_set);
 	}
@@ -43,12 +54,24 @@ class C_ParametrosFI extends C_Main
 	
 	public function ObtenerDiasVacacionesFI()
 	{	
-		$data_set = $this->M_ParametrosFI->ObtenerDiasVacacionesFI();
+		$viewInfo  = $this->input->post();
+		$data_set = $this->M_ParametrosFI->ObtenerDiasVacacionesFI($viewInfo);
 		//Either you can print value or you can send value to database
 		echo json_encode($data_set);
 	}
 	// END Singular	
 
+	// Guardar
+	public function GuardarUMA()
+	{
+		$viewInfo  = $this->input->post();
+		$resultado = $this->M_ParametrosFI->GuardarUMA($viewInfo);
+
+		//Either you can print value or you can send value to database
+		echo json_encode($resultado);
+	}
+	// END Guardar
+	
 	// Guardar
 	public function GuardarParametrosFI()
 	{
